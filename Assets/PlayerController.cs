@@ -1,37 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb2d;
-    public float jumpPower = 5f;    //Á¡ÇÁ·Â ¼¼±â   
-    public GameMgr gameMgr;
+    // Rigidbodyë³€ìˆ˜ ì„ ì–¸
+    Rigidbody2D RB_Player;
+    // ì í”„ì„¸ê¸°
+    public float JumpPower = 5f;
 
-    // ½ºÅ©¸³Æ® È°¼ºÈ­ ÈÄ Update Á÷Àü¿¡ ÇÑ¹ø¸¸ È£Ãâ
-    void Start()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-
+    void Start(){
+        RB_Player = GetComponent<Rigidbody2D>();
     }
-    // ¸Å ÇÁ·¹ÀÓ ¸¶´Ù È£Ãâ
-    void Update()
-    {
-        if(Input.GetMouseButtonDown (0))
-        {
-            rb2d.velocity = Vector2.up * jumpPower;
+
+    void Update(){
+        if(Input.GetMouseButtonDown(0)){
+            Debug.Log("jump");
+            RB_Player.velocity = Vector2.up * JumpPower;
         }
     }
 
-    private void OnTriggerExit2D ( Collider2D collision)
-    {
-        if(collision.CompareTag("ScorePlus"))
-        {
-            gameMgr.AddScore();
-        }  
-    }
-    private void OnCollisionEnter2D ( Collision2D collision)
-    {
-        gameMgr.isGameOver = true;
+    // í”Œë ˆì´ì–´ê°€ ë‹¤ë¥¸ ì½œë¦¬ì „ê³¼ ë¶€ë”ªí˜”ì„ ë•Œ ì‹¤í–‰
+    private void OnCollisionEnter2D(Collision2D other){
+        // ìµœê³ ì ìˆ˜ ì €ì¥
+        if(Point.point > Point.bestpoint){
+            Point.bestpoint = Point.point;
+        }
+        SceneManager.LoadScene("GameOverScene");
     }
 }

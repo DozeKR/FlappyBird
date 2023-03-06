@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void Update(){
         if(Input.GetMouseButtonDown(0)){
-            Debug.Log("jump");
+            GetComponent<AudioSource>().Play();
             RB_Player.velocity = Vector2.up * JumpPower;
         }
     }

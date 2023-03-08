@@ -17,6 +17,7 @@
 
 5. 장애물 사이 공간을 지나갈 때 점수가 오른다.
 
- [블로그](https://dozekr.github.io/)
+
+ [<DOZEDATABASE>](https://dozekr.github.io/)
  
  유니티를 활용하여 FlappyBird를 구현했습니다. 블로그를 통해 더 자세하게 정리했습니다. 참고하시기 바랍니다.
